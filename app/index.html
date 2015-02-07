@@ -9,6 +9,7 @@
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/vis/dist/vis.min.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -23,31 +24,53 @@
     <![endif]-->
 
     <div class="hero-unit">
-      <h1>'Allo, 'Allo!</h1>
-      <p>You now have</p>
-      <ul>
-        <li>HTML5 Boilerplate</li>
-      </ul>
+      <h4>You now have a simple graph skeleton in your browser</h4>
+      <p> <i>– And suddenly I turned my eyes into <a href="https://github.com/eguneys/generator-emberfs">yo&nbsp;generator-emberfs</a> -</i></p>
     </div>
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='//www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
+    <div id="mynetwork" class="hero-unit"></div>
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/vis/dist/vis.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js scripts/main.js -->
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
+
+    <script type="text/javascript">
+      // create an array with nodes
+      var nodes = [
+        {id: 1, label: 'Node 1'},
+        {id: 2, label: 'Node 2'},
+        {id: 3, label: 'Node 3'},
+        {id: 4, label: 'Node 4'},
+        {id: 5, label: 'Node 5'}
+      ];
+
+      // create an array with edges
+      var edges = [
+        {from: 1, to: 2},
+        {from: 1, to: 3},
+        {from: 2, to: 4},
+        {from: 2, to: 5}
+      ];
+
+      // create a network
+      var container = document.getElementById('mynetwork');
+      var data= {
+        nodes: nodes,
+        edges: edges,
+      };
+      var options = {
+        width: '400px',
+        height: '400px'
+      };
+      var network = new vis.Network(container, data, options);
+    </script>
+
 </body>
 </html>
